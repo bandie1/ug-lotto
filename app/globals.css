@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {    
+  --color-ezblack: #0b0b0d;
+  --color-ezblacksoft: #17171a;
+  --color-ezgold: #f5b800;
+  --color-ezgoldbright: #ffd84d;
+  --color-ezgolddeep: #b8860b;
+  --color-ezgreen: #0f5c3c;
+  --color-ezred: #d6293e;
+  --font-display: "Baloo 2", sans-serif;
+  --font-sans: "Inter", sans-serif;
+}
+
+:root {
+  --eziloto-black: #0b0b0d;
+  --eziloto-black-soft: #17171a;
+  --eziloto-gold: #f5b800;
+  --eziloto-gold-bright: #ffd84d;
+  --eziloto-gold-deep: #b8860b;
+  --eziloto-green: #0f5c3c;
+  --eziloto-red: #d6293e;
+}
+
+body {
+  background-color: var(--eziloto-black);
+  color: #f4f4f5;
+  font-family: 'Inter', sans-serif;
+}
+
+.font-display {
+  font-family: 'Baloo 2', sans-serif;
+}
+
+/* Lottery ball */
+.lotto-ball {
+  background: radial-gradient(circle at 35% 30%, var(--eziloto-gold-bright), var(--eziloto-gold) 60%, var(--eziloto-gold-deep) 100%);
+  box-shadow: 0 0 0 3px rgba(0,0,0,0.4) inset, 0 4px 10px rgba(0,0,0,0.5);
+  color: #1a1400;
+}
+
+.lotto-ball.filled {
+  animation: pop 0.25s ease-out;
+}
+
+@keyframes pop {
+  0% { transform: scale(0.7); }
+  70% { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+
+.lotto-ball.rolling {
+  animation: roll 0.6s ease-in-out infinite alternate;
+}
+
+@keyframes roll {
+  0% { transform: rotate(-8deg) scale(1); }
+  100% { transform: rotate(8deg) scale(1.05); }
+}
+
+.gold-glow {
+  box-shadow: 0 0 24px rgba(245, 184, 0, 0.35);
+}
+
+@keyframes toast-in {
+  0% { transform: translateY(-16px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.animate-toast-in {
+  animation: toast-in 0.2s ease-out;
+}
+
+.confetti-piece {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  opacity: 0.9;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lotto-ball.rolling,
+  .lotto-ball.filled,
+  .confetti-piece {
+    animation: none !important;
+  }
+}
